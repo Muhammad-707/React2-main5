@@ -18,7 +18,6 @@ import {
 } from "lucide-react";
 
 export default function InfoModal() {
-  // Предположим, в сторе есть состояние для этого окна
   const { 
     isInfoOpen, 
     setInfoOpen, 
@@ -30,8 +29,8 @@ export default function InfoModal() {
   if (!selectedUser) return null;
 
   const handleEdit = () => {
-    setInfoOpen(false); // Закрываем инфо
-    setEditModalOpen(true, selectedUser); // Открываем редактирование
+    setInfoOpen(false); 
+    setEditModalOpen(true, selectedUser);
   };
 
   const handleDelete = () => {
@@ -44,7 +43,6 @@ export default function InfoModal() {
   return (
     <Sheet open={isInfoOpen} onOpenChange={setInfoOpen}>
       <SheetContent className="sm:max-w-[400px] p-0 border-l shadow-2xl">
-        {/* Кастомный хедер как на фото */}
         <div className="flex items-center justify-between p-4 border-b">
           <Button 
             variant="ghost" 
@@ -55,21 +53,16 @@ export default function InfoModal() {
             <X size={20} />
           </Button>
           <span className="font-semibold text-lg">User info</span>
-          <div className="w-9" /> {/* Спейсер для центровки заголовка */}
+          <div className="w-9" />
         </div>
 
         <div className="p-8 flex flex-col items-center">
-          {/* Аватар */}
           <Avatar className="w-40 h-40 border-4 border-white shadow-lg mb-4">
             <AvatarImage src={selectedUser.img} alt={selectedUser.name} className="object-cover" />
             <AvatarFallback className="text-4xl">{selectedUser.name?.charAt(0)}</AvatarFallback>
           </Avatar>
-
-          {/* Имя и почта */}
           <h2 className="text-2xl font-bold text-gray-800">{selectedUser.name}</h2>
           <p className="text-gray-400 text-sm mb-8">{selectedUser.email}</p>
-
-          {/* Список данных */}
           <div className="w-full space-y-6 border-t pt-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3 text-gray-600">
@@ -102,7 +95,6 @@ export default function InfoModal() {
             </div>
           </div>
 
-          {/* Кнопки действий */}
           <div className="flex gap-4 w-full mt-10">
             <Button 
               onClick={handleEdit}

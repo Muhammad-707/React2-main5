@@ -19,7 +19,7 @@ import { Download } from "lucide-react";
 
 export default function AddModal() {
   const { isAddModalOpen, setAddModalOpen, addUser } = useStore();
-  const fileInputRef = useRef(null); // Реф для скрытого инпута
+  const fileInputRef = useRef(null); 
   
   const [formData, setFormData] = useState({
     name: "",
@@ -33,7 +33,6 @@ export default function AddModal() {
 
   const [previewName, setPreviewName] = useState(".png / .jpg / .jpeg");
 
-  // Функция обработки файла
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -47,7 +46,7 @@ export default function AddModal() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Теперь Enter будет работать
+    e.preventDefault(); 
     
     const newUser = {
       id: Date.now(),
@@ -72,10 +71,8 @@ export default function AddModal() {
           <DialogTitle className="text-xl font-bold text-gray-800">Add new</DialogTitle>
         </DialogHeader>
 
-        {/* Оборачиваем в форму для работы Enter */}
         <form onSubmit={handleSubmit} className="space-y-5 py-4">
           
-          {/* Рабочее поле Image */}
           <div 
             onClick={() => fileInputRef.current.click()} 
             className="relative border rounded-md p-3 flex justify-between items-center text-gray-400 cursor-pointer hover:bg-gray-50 transition-colors"
@@ -162,13 +159,13 @@ export default function AddModal() {
 
           <div className="flex gap-4 mt-4">
             <Button 
-              type="submit" // Кнопка теперь отправляет форму
+              type="submit"
               className="flex-1 bg-[#2196F3] hover:bg-[#1976D2] text-white py-6 uppercase font-bold tracking-wider"
             >
               Save
             </Button>
             <Button 
-              type="button" // Чтобы не срабатывал сабмит при отмене
+              type="button" 
               variant="outline" 
               className="flex-1 border-[#2196F3] text-[#2196F3] py-6 uppercase font-bold tracking-wider"
               onClick={() => setAddModalOpen(false)}

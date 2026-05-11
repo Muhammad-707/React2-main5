@@ -16,15 +16,12 @@ import InfoModal from './InfoModal';
 import { useStore } from "@/reducer/reducer";
 
 export default function Crud() {
-    // 1. Состояния для фильтров
     const [search, setSearch] = useState("");
     const [status, setStatus] = useState("all");
     const [city, setCity] = useState("all");
 
-    // 2. Состояние для темы (по умолчанию берем из системы или localStorage)
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
-    // 3. Эффект для применения темы
     useEffect(() => {
         const root = window.document.documentElement;
         if (theme === 'dark') {
@@ -38,10 +35,8 @@ export default function Crud() {
     const setAddModalOpen = useStore((state) => state.setAddModalOpen);
 
     return (
-        // Добавляем transition для плавного переключения цветов
         <div className='min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300'>
             <div className='max-w-[1350px] mx-auto pt-5 px-4'>
-                {/* HEADER */}
                 <div className='flex justify-between items-center'>
                     <h1 className='font-bold text-4xl text-gray-800 dark:text-white'>User List</h1>
                     <div className='flex items-center gap-6'>
@@ -52,7 +47,6 @@ export default function Crud() {
                             <Plus className='mr-2 size-5' /> New
                         </Button>
 
-                        {/* Переключатель Темы */}
                         <div className='flex items-center border border-gray-300 dark:border-gray-700 rounded-md overflow-hidden bg-white dark:bg-slate-900'>
                             <Button 
                                 onClick={() => setTheme('light')}
@@ -80,10 +74,8 @@ export default function Crud() {
                     </div>
                 </div>
 
-                {/* FILTERS AREA */}
                 <div className="flex items-end justify-between gap-4 pt-10">
                     <div className="flex items-center gap-4">
-                        {/* Status Filter */}
                         <div className="relative">
                             <label className="absolute -top-2 left-2 bg-white dark:bg-slate-950 px-1 text-[11px] font-medium text-gray-400 z-10">
                                 Status
@@ -100,7 +92,6 @@ export default function Crud() {
                             </Select>
                         </div>
 
-                        {/* City Filter */}
                         <div className="relative">
                             <label className="absolute -top-2 left-2 bg-white dark:bg-slate-950 px-1 text-[11px] font-medium text-gray-400 z-10">
                                 City
@@ -120,7 +111,6 @@ export default function Crud() {
                         </div>
                     </div>
 
-                    {/* Search Input */}
                     <div className="relative flex-1 max-w-[400px]">
                         <label className="absolute -top-2 left-3 bg-white dark:bg-slate-950 px-1 text-[11px] font-medium text-gray-400 z-10">
                             Search
@@ -138,7 +128,6 @@ export default function Crud() {
                     </div>
                 </div>
 
-                {/* TABLE AREA */}
                 <div className='py-8'>
                     <UserList 
                         search={search} 
@@ -148,7 +137,6 @@ export default function Crud() {
                 </div>
             </div>
 
-            {/* MODALS */}
             <AddModal />
             <EditModal />
             <InfoModal />

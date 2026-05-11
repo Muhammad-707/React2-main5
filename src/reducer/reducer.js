@@ -1,8 +1,7 @@
 import { create } from "zustand";
 
 export const useStore = create((set) => ({
-  state: "", // Сюда можно записывать текст из инпутов
-  // Твои локальные данные теперь в глобальном сторе
+  state: "", 
   users: [
     { id: 1, name: "Jacob Jones", email: "jackson.graham@example.com", city: "Dushanbe", status: "INACTIVE", phone: "88888 0090", img: "https://i.pravatar.cc/150?u=1" },
     { id: 2, name: "Jenny Wilson", email: "jessica.hanson@example.com", city: "Kulob", status: "INACTIVE", phone: "88888 0090", img: "https://i.pravatar.cc/150?u=2" },
@@ -14,12 +13,11 @@ export const useStore = create((set) => ({
     { id: 8, name: "Ronald Richards", email: "tim.jennings@example.com", city: "Hisor", status: "ACTIVE", phone: "88888 0090", img: "https://i.pravatar.cc/150?u=8" },
   ],
   isAddModalOpen: false,
-  isEditModalOpen: false, // Состояние для модалки редактирования
-  editingUser: null,      // Здесь будем хранить юзера, которого правим
+  isEditModalOpen: false, 
+  editingUser: null,     
 
   setAddModalOpen: (open) => set({ isAddModalOpen: open }),
 
-  // Функции для редактирования
   setEditModalOpen: (open, user = null) => set({
     isEditModalOpen: open,
     editingUser: user
@@ -31,12 +29,10 @@ export const useStore = create((set) => ({
     users: state.users.filter((user) => user.id !== id)
   })),
 
-  // Функция обновления данных
   updateUser: (updatedUser) => set((state) => ({
-    users: state.users.map((u) => u.id === updatedUser.id ? updatedUser : u)
+    users: state.users.map((e) => e.id === updatedUser.id ? updatedUser : e)
   })),
 
-  // Примерная структура в вашем сторе
   isInfoOpen: false,
   selectedUser: null,
   setInfoOpen: (isOpen, user = null) => set({

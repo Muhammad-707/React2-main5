@@ -30,7 +30,6 @@ export default function EditModal() {
     img: "",
   });
 
-  // Синхронизация локального состояния с выбранным юзером при открытии
   useEffect(() => {
     if (editingUser) {
       setFormData({
@@ -45,12 +44,12 @@ export default function EditModal() {
   }, [editingUser]);
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Теперь Enter сохраняет форму
+    e.preventDefault(); 
     
     updateUser({
-      ...editingUser, // Важно! Сохраняем ID и другие поля оригинального объекта
-      ...formData,    // Перезаписываем измененные поля
-      status: formData.status.toUpperCase(), // Возвращаем в верхний регистр для таблицы
+      ...editingUser, 
+      ...formData,   
+      status: formData.status.toUpperCase(),
     });
     
     setEditModalOpen(false, null);
@@ -73,9 +72,7 @@ export default function EditModal() {
         <DialogHeader>
           <DialogTitle className="text-xl font-bold text-gray-800">Edit User</DialogTitle>
         </DialogHeader>
-
         <form onSubmit={handleSubmit} className="space-y-5 py-4">
-          {/* Поле выбора изображения */}
           <div 
             onClick={() => fileInputRef.current.click()} 
             className="relative border rounded-md p-3 flex justify-between items-center text-gray-400 cursor-pointer hover:bg-gray-50 transition-colors"
